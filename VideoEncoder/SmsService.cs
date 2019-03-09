@@ -1,7 +1,7 @@
-using System;
-
 namespace VideoEncoder
 {
+    using System;
+
     internal class SmsService : ISender<string>
     {
         internal void OnVideoEncoded(object sender, VideoEventArgs ea) =>

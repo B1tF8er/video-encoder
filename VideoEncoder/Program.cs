@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace VideoEncoder
+﻿namespace VideoEncoder
 {
+    using System;
+    using System.Threading.Tasks;
+    
     class Program
     {
         private const string ErrorMessage = "Only one arg is allowed";
