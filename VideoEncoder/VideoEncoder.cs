@@ -1,14 +1,15 @@
-using System;
-using System.Threading.Tasks;
-
 namespace VideoEncoder
 {
+    using System;
+    using System.Threading.Tasks;
+    
     internal class VideoEncoder
     {
         private const string EncodeErrorMessage = "An encoding error ocurred";
-        internal EventHandler<VideoEventArgs> VideoEncoded;
 
         private readonly Video video;
+
+        internal EventHandler<VideoEventArgs> VideoEncoded;
 
         internal VideoEncoder(Video video) => this.video = video;
 
