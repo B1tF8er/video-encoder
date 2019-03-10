@@ -5,6 +5,7 @@ namespace VideoEncoder
 {
     internal class VideoEncoder
     {
+        private const string EncodeErrorMessage = "An encoding error ocurred";
         internal EventHandler<VideoEventArgs> VideoEncoded;
 
         private readonly Video video;
@@ -13,9 +14,27 @@ namespace VideoEncoder
 
         internal async Task EncodeAsync()
         {
-            Console.WriteLine($"Encoding.... Video {video.Name}");
-            await Task.FromResult(0);
-            OnVideoEncoded(Success.Yes);
+            try
+            {
+                Console.WriteLine($"Encoding.... Video {video.Name}");
+                await SimulateEncodingAsync();
+                OnVideoEncoded(Success.Yes);
+            }
+            catch
+            {
+                OnVideoEncoded(Success.No);
+                throw;
+            }
+        }
+
+        private async Task SimulateEncodingAsync()
+        {
+            var random = new Random();
+
+            if (random.Next(1, 10) < 5)
+                await Task.FromResult(0);
+            else
+                throw new Exception(EncodeErrorMessage);
         }
 
         protected virtual void OnVideoEncoded(Success success) =>
