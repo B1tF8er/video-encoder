@@ -14,10 +14,6 @@ namespace VideoEncoder
             Console.ResetColor();
         }
 
-        public Sms Format(string message) =>
-            new Sms
-            {
-                Body = message
-            };
+        public Sms Format(string message) => new Sms(message);
     }
 }

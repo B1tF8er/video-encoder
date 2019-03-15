@@ -14,10 +14,6 @@ namespace VideoEncoder
             Console.ResetColor();
         }
 
-        public Mail Format(string message) =>
-            new Mail
-            {
-                Body = message
-            };
+        public Mail Format(string message) => new Mail(message);
     }
 }
