@@ -2,11 +2,17 @@ namespace VideoEncoder
 {
     using System;
 
-    internal class SmsService : ISender<string>
+    internal class SmsService : ISender<Sms>, IFormatter<string, Sms>
     {
         internal void OnVideoEncoded(object sender, VideoEventArgs ea) =>
-            Send($"Sending sms... Video {ea.Name} was encoded successfully? {ea.Success}");
+            Send(Format($"Sending sms... Video {ea.Name} was encoded successfully? {ea.Success}"));
 
-        public void Send(string message) => Console.WriteLine(message);
+        public void Send(Sms message) => Console.WriteLine(message.Body);
+
+        public Sms Format(string message) =>
+            new Sms
+            {
+                Body = message
+            };
     }
 }
