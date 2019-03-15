@@ -7,7 +7,12 @@ namespace VideoEncoder
         internal void OnVideoEncoded(object sender, VideoEventArgs ea) =>
             Send(Format($"Sending email... Video {ea.Name} was encoded successfully? {ea.Success}"));
 
-        public void Send(Mail message) => Console.WriteLine(message.Body);
+        public void Send(Mail message)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(message.Body);
+            Console.ResetColor();
+        }
 
         public Mail Format(string message) =>
             new Mail

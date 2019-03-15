@@ -7,7 +7,12 @@ namespace VideoEncoder
         internal void OnVideoEncoded(object sender, VideoEventArgs ea) =>
             Send(Format($"Sending sms... Video {ea.Name} was encoded successfully? {ea.Success}"));
 
-        public void Send(Sms message) => Console.WriteLine(message.Body);
+        public void Send(Sms message)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(message.Body);
+            Console.ResetColor();
+        }
 
         public Sms Format(string message) =>
             new Sms
