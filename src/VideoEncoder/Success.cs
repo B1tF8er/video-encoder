@@ -1,6 +1,6 @@
 namespace VideoEncoder
 {
-    internal enum Success
+    public enum Success
     {
         Yes,
         No

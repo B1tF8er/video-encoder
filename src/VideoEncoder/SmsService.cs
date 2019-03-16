@@ -2,10 +2,12 @@ namespace VideoEncoder
 {
     using System;
 
-    internal class SmsService : ISender<Sms>, IFormatter<string, Sms>
+    internal class SmsService : ISmsService
     {
         internal void OnVideoEncoded(object sender, VideoEventArgs ea) =>
             Send(Format($"Video {ea.Name} was encoded successfully? {ea.Success}"));
+
+        public Sms Format(string message) => new Sms($"Sending sms... {message}");
 
         public void Send(Sms message)
         {
@@ -13,7 +15,5 @@ namespace VideoEncoder
             Console.WriteLine(message.Body);
             Console.ResetColor();
         }
-
-        public Sms Format(string message) => new Sms($"Sending sms... {message}");
     }
 }

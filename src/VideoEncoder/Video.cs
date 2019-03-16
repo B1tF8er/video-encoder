@@ -1,7 +1,7 @@
 namespace VideoEncoder
 {
-    internal class Video
+    public class Video
     {
-        internal string Name { get; set; }
+        public string Name { get; set; }
     }
 }

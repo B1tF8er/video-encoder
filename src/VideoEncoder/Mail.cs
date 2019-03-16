@@ -1,6 +1,6 @@
 namespace VideoEncoder
 {
-    internal class Mail
+    public class Mail
     {
         public string Body { get; }
 

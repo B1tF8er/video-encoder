@@ -2,10 +2,12 @@ namespace VideoEncoder
 {
     using System;
 
-    internal class EmailService : ISender<Mail>, IFormatter<string, Mail>
+    public class EmailService : IEmailService
     {
         internal void OnVideoEncoded(object sender, VideoEventArgs ea) =>
             Send(Format($"Video {ea.Name} was encoded successfully? {ea.Success}"));
+
+        public Mail Format(string message) => new Mail($"Sending email... {message}");
 
         public void Send(Mail message)
         {
@@ -13,7 +15,5 @@ namespace VideoEncoder
             Console.WriteLine(message.Body);
             Console.ResetColor();
         }
-
-        public Mail Format(string message) => new Mail($"Sending email... {message}");
     }
 }

@@ -1,6 +1,6 @@
 namespace VideoEncoder
 {
-    internal class Sms
+    public class Sms
     {
         public string Body { get; }
 
