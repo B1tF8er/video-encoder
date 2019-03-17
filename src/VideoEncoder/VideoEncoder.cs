@@ -3,17 +3,17 @@ namespace VideoEncoder
     using System;
     using System.Threading.Tasks;
     
-    internal class VideoEncoder
+    public class VideoEncoder
     {
         private const string EncodeErrorMessage = "An encoding error ocurred";
 
         private readonly Video video;
 
-        internal EventHandler<VideoEventArgs> VideoEncoded;
+        public EventHandler<VideoEventArgs> VideoEncoded;
 
-        internal VideoEncoder(Video video) => this.video = video;
+        public VideoEncoder(Video video) => this.video = video;
 
-        internal async Task EncodeAsync()
+        public async Task EncodeAsync()
         {
             try
             {
@@ -38,7 +38,7 @@ namespace VideoEncoder
                 throw new Exception(EncodeErrorMessage);
         }
 
-        protected virtual void OnVideoEncoded(Success success) =>
+        public virtual void OnVideoEncoded(Success success) =>
             VideoEncoded?.Invoke(this, new VideoEventArgs
             {
                 Name = video.Name,
