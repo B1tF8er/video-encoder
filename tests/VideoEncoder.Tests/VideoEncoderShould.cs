@@ -45,7 +45,7 @@ namespace VideoEncoder.Tests
             };
 
             videoEncoder.VideoEncoded += videoEncoded;
-            videoEncoder.OnVideoEncoded(Success.No);
+            videoEncoder.OnVideoEncoded(success);
             videoEncoder.VideoEncoded -= videoEncoded;
         }
     }
