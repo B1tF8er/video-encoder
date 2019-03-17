@@ -17,6 +17,7 @@ namespace VideoEncoder.Tests
             videoEncoder = new VideoEncoder(video);
         }
 
+        [Fact]
         public void RaiseEvent_ForEncodedVideo()
         {
             var success = Success.Yes;
@@ -32,6 +33,7 @@ namespace VideoEncoder.Tests
             videoEncoder.VideoEncoded -= videoEncoded;
         }
 
+        [Fact]
         public void RaiseEvent_ForUnencodedVideo()
         {
             var success = Success.No;
