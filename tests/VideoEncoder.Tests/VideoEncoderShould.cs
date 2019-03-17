@@ -6,7 +6,7 @@ namespace VideoEncoder.Tests
     public class VideoEncoderShould
     {
         private const string videoName = "Test";
-        private readonly VideoEncoder videoEncoder;
+        private readonly VideoEncoder sut;
 
         public VideoEncoderShould()
         {
@@ -14,7 +14,7 @@ namespace VideoEncoder.Tests
             {
                 Name = videoName
             };
-            videoEncoder = new VideoEncoder(video);
+            sut = new VideoEncoder(video);
         }
 
         [Fact]
@@ -23,14 +23,14 @@ namespace VideoEncoder.Tests
             var success = Success.Yes;
             var expected = $"Video {videoName} was encoded successfully? {success}";
 
-            EventHandler<VideoEventArgs> videoEncoded = (sender, ea) => {
+            EventHandler<VideoEventArgs> onVideoEncoded = (sender, ea) => {
                 var actual = $"Video {ea.Name} was encoded successfully? {ea.Success}";
                 Assert.Equal(expected, actual);
             };
 
-            videoEncoder.VideoEncoded += videoEncoded;
-            videoEncoder.OnVideoEncoded(success);
-            videoEncoder.VideoEncoded -= videoEncoded;
+            sut.VideoEncoded += onVideoEncoded;
+            sut.OnVideoEncoded(success);
+            sut.VideoEncoded -= onVideoEncoded;
         }
 
         [Fact]
@@ -39,14 +39,14 @@ namespace VideoEncoder.Tests
             var success = Success.No;
             var expected = $"Video {videoName} was encoded successfully? {success}";
 
-            EventHandler<VideoEventArgs> videoEncoded = (sender, ea) => {
+            EventHandler<VideoEventArgs> onVideoEncoded = (sender, ea) => {
                 var actual = $"Video {ea.Name} was encoded successfully? {ea.Success}";
                 Assert.Equal(expected, actual);
             };
 
-            videoEncoder.VideoEncoded += videoEncoded;
-            videoEncoder.OnVideoEncoded(success);
-            videoEncoder.VideoEncoded -= videoEncoded;
+            sut.VideoEncoded += onVideoEncoded;
+            sut.OnVideoEncoded(success);
+            sut.VideoEncoded -= onVideoEncoded;
         }
     }
 }
