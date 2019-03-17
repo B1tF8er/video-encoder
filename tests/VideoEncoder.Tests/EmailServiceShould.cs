@@ -9,16 +9,14 @@ namespace VideoEncoder.Tests
         private const string Message = "test";
         private readonly Mock<IEmailService> sut;
 
-        public EmailServiceShould()
-        {
+        public EmailServiceShould() =>
             sut = new Mock<IEmailService>(MockBehavior.Strict);
-        }
 
         [Fact]
         public void Format_Message_To_Mail()
         {
             var expected = new Mail(Message);
-            sut.Setup(es => es.Format(Message)).Returns(expected);
+            sut.Setup(emailService => emailService.Format(Message)).Returns(expected);
 
             var actual = sut.Object.Format(Message);
 
@@ -29,11 +27,11 @@ namespace VideoEncoder.Tests
         public void Send_Message_As_Mail()
         {
             var mail = new Mail(Message);
-            sut.Setup(es => es.Send(mail));
+            sut.Setup(emailService => emailService.Send(mail));
 
             sut.Object.Send(mail);
 
-            sut.Verify(es => es.Send(mail), Times.Once);
+            sut.Verify(emailService => emailService.Send(mail), Times.Once);
         }
     }
 }

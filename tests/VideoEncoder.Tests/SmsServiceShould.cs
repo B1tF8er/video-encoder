@@ -9,16 +9,14 @@ namespace VideoEncoder.Tests
         private const string Message = "test";
         private readonly Mock<ISmsService> sut;
 
-        public SmsServiceShould()
-        {
+        public SmsServiceShould() =>
             sut = new Mock<ISmsService>(MockBehavior.Strict);
-        }
 
         [Fact]
         public void Format_Message_To_Sms()
         {
             var expected = new Sms(Message);
-            sut.Setup(es => es.Format(Message)).Returns(expected);
+            sut.Setup(smsService => smsService.Format(Message)).Returns(expected);
 
             var actual = sut.Object.Format(Message);
 
@@ -29,11 +27,11 @@ namespace VideoEncoder.Tests
         public void Send_Message_As_Sms()
         {
             var sms = new Sms(Message);
-            sut.Setup(es => es.Send(sms));
+            sut.Setup(smsService => smsService.Send(sms));
 
             sut.Object.Send(sms);
 
-            sut.Verify(es => es.Send(sms), Times.Once);
+            sut.Verify(smsService => smsService.Send(sms), Times.Once);
         }
     }
 }
