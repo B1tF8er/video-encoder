@@ -18,7 +18,7 @@ namespace VideoEncoder.Tests
         }
 
         [Fact]
-        public void RaiseEvent_ForEncodedVideo()
+        public void Raise_Event_For_Encoded_Video()
         {
             var success = Success.Yes;
             var expected = $"Video {videoName} was encoded successfully? {success}";
@@ -34,7 +34,7 @@ namespace VideoEncoder.Tests
         }
 
         [Fact]
-        public void RaiseEvent_ForUnencodedVideo()
+        public void Raise_Event_For_Unencoded_Video()
         {
             var success = Success.No;
             var expected = $"Video {videoName} was encoded successfully? {success}";
