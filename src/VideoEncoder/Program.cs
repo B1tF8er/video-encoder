@@ -2,25 +2,20 @@
 {
     using System;
     using System.Threading.Tasks;
+    using static ArgsParser;
     using static ConsoleExtensions;
 
     class Program
     {
+        private const string NoVideoNameParameter = "Need video name parameter";
+
         static async Task Main(string[] args)
         {
-            var name = TryGetVideoName(args);
+            var name = args.TryGetVideoName();
             if (name != string.Empty)
                 await EncodeVideoAsync(name);
             else
-                "Need name parameter".WriteLine(ConsoleColor.Red);
-        }
-
-        private static string TryGetVideoName(string[] args)
-        {
-            if (args.Length == 1)
-                return args[0];
-            else
-                return string.Empty;
+                NoVideoNameParameter.WriteLine(ConsoleColor.Red);
         }
 
         private static async Task EncodeVideoAsync(string videoName)
