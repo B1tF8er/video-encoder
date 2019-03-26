@@ -1,4 +1,3 @@
-
 namespace VideoEncoder
 {
     using System;
