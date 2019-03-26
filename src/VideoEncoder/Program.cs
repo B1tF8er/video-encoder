@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
+    using static ConsoleExtensions;
 
     class Program
     {
@@ -11,7 +12,7 @@
             if (name != string.Empty)
                 await EncodeVideoAsync(name);
             else
-                Console.WriteLine("need name parameter");
+                "Need name parameter".WriteLine(ConsoleColor.Red);
         }
 
         private static string TryGetVideoName(string[] args)

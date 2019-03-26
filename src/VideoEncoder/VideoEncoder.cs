@@ -2,6 +2,7 @@ namespace VideoEncoder
 {
     using System;
     using System.Threading.Tasks;
+    using static ConsoleExtensions;
 
     public class VideoEncoder
     {
@@ -13,7 +14,7 @@ namespace VideoEncoder
 
         public async Task EncodeAsync()
         {
-            Console.WriteLine($"Encoding.... Video {video.Name}");
+            $"Encoding.... Video {video.Name}".WriteLine(ConsoleColor.Magenta);
             var success = await SimulateEncodingAsync();
             OnVideoEncoded(success);
         }

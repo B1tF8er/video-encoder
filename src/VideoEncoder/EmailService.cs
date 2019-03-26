@@ -1,6 +1,7 @@
 namespace VideoEncoder
 {
     using System;
+    using static ConsoleExtensions;
 
     public class EmailService : IEmailService
     {
@@ -9,11 +10,7 @@ namespace VideoEncoder
 
         public Mail Format(string message) => new Mail($"Sending email... {message}");
 
-        public void Send(Mail message)
-        {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(message.Body);
-            Console.ResetColor();
-        }
+        public void Send(Mail message) => 
+            message.Body.WriteLine(ConsoleColor.Cyan);
     }
 }

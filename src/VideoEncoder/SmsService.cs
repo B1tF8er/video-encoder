@@ -1,6 +1,7 @@
 namespace VideoEncoder
 {
     using System;
+    using static ConsoleExtensions;
 
     internal class SmsService : ISmsService
     {
@@ -9,11 +10,7 @@ namespace VideoEncoder
 
         public Sms Format(string message) => new Sms($"Sending sms... {message}");
 
-        public void Send(Sms message)
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(message.Body);
-            Console.ResetColor();
-        }
+        public void Send(Sms message) => 
+            message.Body.WriteLine(ConsoleColor.Green);
     }
 }
