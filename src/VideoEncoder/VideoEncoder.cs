@@ -2,11 +2,9 @@ namespace VideoEncoder
 {
     using System;
     using System.Threading.Tasks;
-    
+
     public class VideoEncoder
     {
-        private const string EncodeErrorMessage = "An encoding error ocurred";
-
         private readonly Video video;
 
         public EventHandler<VideoEventArgs> VideoEncoded;
@@ -15,27 +13,19 @@ namespace VideoEncoder
 
         public async Task EncodeAsync()
         {
-            try
-            {
-                Console.WriteLine($"Encoding.... Video {video.Name}");
-                await SimulateEncodingAsync();
-                OnVideoEncoded(Success.Yes);
-            }
-            catch
-            {
-                OnVideoEncoded(Success.No);
-                throw;
-            }
+            Console.WriteLine($"Encoding.... Video {video.Name}");
+            var success = await SimulateEncodingAsync();
+            OnVideoEncoded(success);
         }
 
-        private async Task SimulateEncodingAsync()
+        private async Task<Success> SimulateEncodingAsync()
         {
             var random = new Random();
 
             if (random.Next(1, 10) < 5)
-                await Task.FromResult(0);
+                return await Task.FromResult(Success.Yes);
             else
-                throw new Exception(EncodeErrorMessage);
+                return await Task.FromResult(Success.No);
         }
 
         public virtual void OnVideoEncoded(Success success) =>
