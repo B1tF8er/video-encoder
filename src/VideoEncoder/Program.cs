@@ -29,6 +29,9 @@
             videoEncoder.VideoEncoded += smsService.OnVideoEncoded;
 
             await videoEncoder.EncodeAsync();
+
+            videoEncoder.VideoEncoded -= emailService.OnVideoEncoded;
+            videoEncoder.VideoEncoded -= smsService.OnVideoEncoded;
         }
     }
 }
