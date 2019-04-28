@@ -17,5 +17,5 @@ dotnet test --no-build tests/VideoEncoder.Tests -c Release
 # build image and tag it
 docker build -t video-encoder-dev .
 # run image using tag ^^
-docker run --rm video-encoder-dev test-docker
+docker run --rm -it video-encoder-dev test-docker
 ```
