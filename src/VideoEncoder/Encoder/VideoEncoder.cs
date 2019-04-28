@@ -14,7 +14,7 @@ namespace VideoEncoder
 
         public async Task EncodeAsync()
         {
-            $"Encoding.... Video {video.Name}".WriteLine(ConsoleColor.Magenta);
+            $"Encoding.... Video {video.Name}".WriteMagentaLine();
             var success = await SimulateEncodingAsync();
             OnVideoEncoded(success);
         }

@@ -11,6 +11,6 @@ namespace VideoEncoder
         public Mail Format(string message) => new Mail($"Sending email... {message}");
 
         public void Send(Mail message) => 
-            message.Body.WriteLine(ConsoleColor.Cyan);
+            message.Body.WriteCyanLine();
     }
 }

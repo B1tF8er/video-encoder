@@ -15,7 +15,7 @@
             if (name != string.Empty)
                 await EncodeVideoAsync(name);
             else
-                NoVideoNameParameter.WriteLine(ConsoleColor.Red);
+                NoVideoNameParameter.WriteRedLine();
         }
 
         private static async Task EncodeVideoAsync(string videoName)

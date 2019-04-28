@@ -11,6 +11,6 @@ namespace VideoEncoder
         public Sms Format(string message) => new Sms($"Sending sms... {message}");
 
         public void Send(Sms message) => 
-            message.Body.WriteLine(ConsoleColor.Green);
+            message.Body.WriteGreenLine();
     }
 }
