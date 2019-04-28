@@ -9,7 +9,7 @@
     class Program
     {
         private const string NoVideoNameParameter = "Need video name parameter";
-        private const string AskForVideoName = "Please specify a video name: ";
+        private const string AskForVideoName = "Please specify a video name:";
 
         static async Task Main(string[] args)
         {
