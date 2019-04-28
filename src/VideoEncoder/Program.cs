@@ -11,23 +11,22 @@
         private const string NoVideoNameParameter = "Need video name parameter";
         private const string AskForVideoName = "Please specify a video name:";
 
-        static async Task Main(string[] args)
-        {
-            var videoName = args.TryGetVideoName();
-            await ValidateVideoNameAsync(videoName);
-        }
+        static async Task Main(string[] args) =>
+            await ValidateVideoNameAsync(args.TryGetVideoName());
 
-        static async Task ValidateVideoNameAsync(string videoName)
+        private static async Task ValidateVideoNameAsync(string videoName)
         {
             if (!videoName.IsNullOrEmptyOrWhiteSpace())
                 await EncodeVideoAsync(videoName);
             else
-            {
-                NoVideoNameParameter.WriteRedLine();
-                AskForVideoName.WriteYellowLine();
-                videoName = Console.ReadLine();
-                await ValidateVideoNameAsync(videoName);
-            }
+                await AskForVideoNameAsync();
+        }
+
+        private static async Task AskForVideoNameAsync()
+        {
+            NoVideoNameParameter.WriteRedLine();
+            AskForVideoName.WriteYellowLine();
+            await ValidateVideoNameAsync(Console.ReadLine());
         }
 
         private static async Task EncodeVideoAsync(string videoName)
