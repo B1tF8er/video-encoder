@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using static ArgsParser;
     using static ConsoleExtensions;
+    using static StringExtensions;
 
     class Program
     {
@@ -18,7 +19,7 @@
 
         static async Task ValidateVideoNameAsync(string videoName)
         {
-            if (videoName != string.Empty)
+            if (!videoName.IsNullOrEmptyOrWhiteSpace())
                 await EncodeVideoAsync(videoName);
             else
             {
