@@ -22,5 +22,8 @@ namespace VideoEncoder
 
         internal static void WriteMagentaLine(this string message) =>
             WriteLine(message, ConsoleColor.Magenta);
+
+        internal static void WriteYellowLine(this string message) =>
+            WriteLine(message, ConsoleColor.Yellow);
     }
 }
